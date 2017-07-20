@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<template v-if="loginType === 'username'">
+		<label>Username</label>
+		<!-- 使用key属性来声明“这两个元素是完全独立的——不要复用它们”，否则相同的input会被复用 -->
+		<input type="" name="" placeholder="Enter your username" key="username-input">
+	</template>
+	<template v-else-if="loginType === 'email'">
+		<label>Email</label>
+		<input type="" name="" placeholder="Enter your email" key="email-input">
+	</template>
+	<template v-else>
+		<label>Number</label>
+		<input type="number" name="">
+	</template>
+	<button @click="toggle">Toggle your option</button>
+
+</div>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#app',
+		data: {
+			loginType: 'username',
+			types: ['username', 'email', 'number']
+		},
+		methods: {
+			toggle: function() {
+				let typeLength = this.types.length;
+				//随机取数组中的值
+                this.loginType = this.types[Math.floor(Math.random() * typeLength)];
+			}
+		}
+	})
+</script>
+</body>
+</html>

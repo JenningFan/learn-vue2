@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+    <!-- 默认情况下，v-model在input事件中同步输入框的值与数据，修饰符lazy转变为在change 事件中同步。(change事件是当输入完毕时才触发的事件) -->
+	<input type="" name="" v-model.lazy="msg">
+	<span>{{msg}}</span>
+	<!-- type="number" 时 HTML 中输入的值也总是会返回字符串类型。加.number后缀可以改成number类型 -->
+	<input type="number" name="" v-model.number="age">
+	<span>{{age}}</span>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#app',
+		data: {
+			msg: 'Hello Vue',
+			age: null
+		}
+	})
+</script>
+</body>
+</html>

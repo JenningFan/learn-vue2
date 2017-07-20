@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<child my-message="hello!"></child>
+</div>
+<div id="app2">
+    <input type="" name="" v-model="parentMsg" >
+    <br>
+    <my-component v-bind:my-message="parentMsg"></my-component>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#app',
+		data: {
+			message: 'Hello Vue'
+		},
+		components: {
+			'child': {
+				props: ['myMessage'],
+				template: `<span>{{ myMessage }}</span>`
+			}
+		} 
+	});
+
+	Vue.component('my-component', {
+		props: ['myMessage'],
+		template: '<span>{{ myMessage }}</span>'
+	});
+	var app2 = new Vue({
+		el:'#app2',
+		data: {
+		    parentMsg: null
+		}
+	});
+</script>
+</body>
+</html>

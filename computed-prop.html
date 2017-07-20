@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<div>{{message}}</div>
+	<div>computed: {{now2}}</div>
+	<div>methods: {{now()}}</div>
+	<div ></div>
+
+</div>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    /**
+     *计算属性是基于它们的依赖进行缓存的。计算属性只有在它的相关依赖发生改变时才会重新求值。
+     *相比而言，只要发生重新渲染，method 调用总会执行该函数。
+     */  
+	var app = new Vue({
+		el: '#app',
+		data: {
+			message: 'Hello Vue'
+		},
+		methods: {
+			now: function() {
+				return Date.now();
+			}
+		},
+		computed: {
+			now2: function() {
+				return Date.now();
+			}
+		}
+	})
+</script>
+</body>
+</html>

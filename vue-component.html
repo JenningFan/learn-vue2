@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<todo-item v-for="item in messages" v-bind:todo="item"></todo-item>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="text/javascript">
+  Vue.component('todo-item', {
+  	props: ['todo'],
+  	template: '<div>{{todo}}</div>'
+  }); 
+	var app = new Vue({
+		el: '#app',
+		data: {
+			messages: ['Hello Vue','Hi Vue','Goodbye Vue',{text: 'hey Vue'}]
+		}
+	})
+</script>
+</body>
+</html>

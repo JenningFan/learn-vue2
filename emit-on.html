@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <btn @fn2 = "fn3"></btn>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="text/javascript">
+  Vue.component('btn', {
+    template: '<button @click="fn1">nbtn</button>',
+    data: function() {
+      return {
+        vip: 'i am vip from child',
+        vvip: 'i am vvip from child'
+      }
+    },
+    methods: {
+      fn1: function() {
+        /**
+        fn2是一个自定义事件名，可以任意定义，相当于和父组件约定好的一个交接暗号，只要父组件去监听这个暗号，当子组件被点击触发了fn1这个方法时，子组件会通过该暗号去通知父组件去触发它的行为，并可将子组件内的数据附带传递给父组件
+        */
+        this.$emit('fn2', this.vip, this.vvip);
+      }
+    }
+  })  
+
+
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue'
+    },
+    methods: {
+      //接收子组件传来的值，放在function中的参数val中
+      fn3: function(val,val2) {
+        alert(val + ' and ' + val2);
+      }
+    }
+  })
+
+</script>
+</body>
+</html>
